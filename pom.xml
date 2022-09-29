@@ -255,12 +255,29 @@
             <id>local-server</id>
         </profile>
         <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>
+                    http://https://sonarqube:9000
+                </sonar.host.url>
+            </properties>
+        </profile>
+        <profile>
             <id>start-server</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>3.6.0.1398</version>
+                    </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>build-helper-maven-plugin</artifactId>
