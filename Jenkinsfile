@@ -3,15 +3,15 @@ pipeline {
     
     stages {
         
-        stage('Semgrep') {
+        stage('Deptrack') {
             steps {
-                sh "docker run -v ${WORKSPACE}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci --config p/security-audit --config p/secrets"
+                sh "bash deptrack.sh"
             }
         }
         
-       stage('Deptrack'){
+       stage('Semgrep'){
         steps {
-          sh "bash deptrack.sh"
+          sh "docker run -v ${WORKSPACE}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci --config p/security-audit --config p/secrets"
         }
       }
   }
