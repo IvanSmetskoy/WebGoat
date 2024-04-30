@@ -18,7 +18,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v4 
       
       # Generates a BoM and uploads it to OWASP Dependency Track
       - name: Generates BoM and upload to OWASP DTrack
